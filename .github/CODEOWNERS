@@ -1,0 +1,9 @@
+# Default owners for the repository.
+* @lukema95
+
+# Security-sensitive areas.
+/programs/ @lukema95
+/.github/workflows/ @lukema95
+/SECURITY.md @lukema95
+/docs/09-security.md @lukema95
+/docs/09-security.zh.md @lukema95

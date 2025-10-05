@@ -1,0 +1,26 @@
+[package]
+name = "stoa"
+version = "0.1.0"
+description = "Stoa: bonding-curve token launch and fee-sharing protocol on Solana"
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/lukema95/stoa-core"
+homepage = "https://github.com/lukema95/stoa-core"
+keywords = ["solana", "anchor", "bonding-curve", "token-2022"]
+categories = ["cryptography::cryptocurrencies"]
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "stoa"
+
+[features]
+default = []
+cpi = ["no-entrypoint"]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+idl-build = ["anchor-lang/idl-build", "anchor-spl/idl-build"]
+
+[dependencies]
+anchor-lang = { version = "0.32.1", features = ["init-if-needed"] }
+anchor-spl = "0.32.1"

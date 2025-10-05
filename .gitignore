@@ -1,0 +1,25 @@
+# Anchor / Solana
+.anchor/
+target/
+test-ledger/
+
+# Node
+node_modules/
+.yarn/
+coverage/
+dist/
+
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+keys/
+target/deploy/*-keypair.json
+
+# Logs and OS files
+*.log
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
