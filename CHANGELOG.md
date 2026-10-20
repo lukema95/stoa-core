@@ -36,6 +36,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Enforced `protocol_fees + creator_fees <= 100` at initialization.
 - Emitted buy/sell events with the price calculated before the supply update.
 - Widened `total_fee_share_percentage` to `u16` to avoid overflow.
+- Validated `protocol_account` in `claim_pool_fees`.
+- Allowed updating an existing fee recipient when the table is full.
 
 ### Security
 

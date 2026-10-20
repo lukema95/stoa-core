@@ -573,7 +573,12 @@ impl<'info> PoolAccount<'info> for Account<'info, Pool> {
         recipient_type: FeeRecipientType,
         recipient: &AccountInfo<'info>,
     ) -> Result<()> {
-        if Pool::MAX_FEE_RECIPIENTS <= self.fee_recipients.len() {
+        // Updating an existing recipient is allowed even when the table is full.
+        let is_existing = self
+            .fee_recipients
+            .iter()
+            .any(|recipient_entry| recipient_entry.address == recipient.key());
+        if !is_existing && Pool::MAX_FEE_RECIPIENTS <= self.fee_recipients.len() {
             return Err(CustomError::MaxFeeRecipientReached.into());
         }
 

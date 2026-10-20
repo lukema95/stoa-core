@@ -19,8 +19,8 @@
 
 ## 2. 信任假设
 
-- **协议管理员。** `CurveConfiguration.admin` 接收协议费，并且必须在 `buy` / `sell` 中
-  作为 `protocol_account` 签名。生产环境应使用多签保护。
+- **协议管理员。** `CurveConfiguration.admin` 接收协议费。`buy`、`sell` 和
+  `claim_pool_fees` 要求 `protocol_account` 等于该地址。生产环境应使用多签保护。
 - **Upgrade authority。** 程序以可升级 BPF 程序部署。控制 upgrade authority 的人可以
   修改程序逻辑。应放在多签后面，并公开升级策略。
 - **Token-2022。** 程序假设 Token-2022 按规范运行。不支持的扩展可能导致失败或行为不同；
@@ -51,7 +51,8 @@
 - `buy` / `sell` 中 `pool_creator` 使用 `address = pool.creator` 约束。
 - `claim_pool_fees` 中 `distribution_pool_creator` 使用
   `address = distribution_pool.creator` 约束。
-- `protocol_account` 在指令中与 `curve_configuration.admin` 校验。
+- `protocol_account` 在 `buy`、`sell` 和 `claim_pool_fees` 中与
+  `curve_configuration.admin` 校验。
 - 代币账户使用关联代币账户约束，校验 mint 和 authority。
 - 新增指令时，所有剩余的 `/// CHECK` 账户都必须评审。
 

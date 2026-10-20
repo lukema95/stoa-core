@@ -21,7 +21,7 @@ pub struct CurveConfiguration {
 - Space: `8 + 32 + 8 + 8 + 8 = 64`
 - `init` can succeed only once. There is no `update_config` instruction; changing fees requires a program upgrade or a new deployment.
 
-`admin` has two roles: the deployer/protocol account and the address that `protocol_account` must equal in `buy` and `sell` (checked in the instruction).
+`admin` is the `initialize` signer and the address that `protocol_account` must equal in `buy`, `sell`, and `claim_pool_fees`.
 
 ### 1.2 `Pool` (one per mint)
 

@@ -60,6 +60,11 @@ pub fn claim_pool_fees(ctx: Context<ClaimPoolFees>) -> Result<()> {
         return Err(CustomError::InvalidOwner.into());
     }
 
+    // The protocol fee recipient must be the configured admin.
+    if ctx.accounts.protocol_account.key() != ctx.accounts.curve_configuration_account.admin {
+        return Err(CustomError::InvalidProtocolAccount.into());
+    }
+
     let pool = &mut ctx.accounts.pool;
     let distribution_pool = &mut ctx.accounts.distribution_pool;
 

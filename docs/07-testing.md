@@ -12,14 +12,14 @@ Stoa uses two test layers: Rust unit tests for pure logic and account layout, an
 | TypeScript integration | `tests/stoa.ts` | Full instruction flows against a deployed program |
 | Static checks | CI | `cargo fmt`, `cargo clippy`, Prettier, TypeScript, program ID, docs pairing |
 
-The integration suite is stateful and runs in order: initialize, airdrop, create mints, create pools, distribute fees, buy, sell, claim.
+The integration suite is stateful and runs in order: initialize, airdrop, create mints, create pools, distribute fees, update an existing recipient at capacity, buy, sell, claim.
 
 ## 2. Prerequisites
 
 - Rust stable (pinned by `rust-toolchain.toml`)
 - Solana CLI 2.1.x
 - Anchor CLI 0.32.1
-- Node.js 20+ and Yarn 1.22+
+- Node.js 20.18+ and Yarn 1.22+
 
 ```bash
 yarn install
@@ -57,6 +57,7 @@ Anchor 0.32 defaults to the Surfpool validator. Use `--validator legacy` for the
 | `Create TokenMint, Metadata and PDA` | Token-2022 mint with Metadata Pointer, metadata fields, PDAs |
 | `Create Pool` | Two pools with different creators and mints |
 | `Distribute Fee` | User recipient and pool recipient, total share accounting |
+| `Update Fee Recipient At Capacity` | Fills the table to 10 and updates an existing recipient |
 | `Buy Token` | Curve price, fee transfers, supply/reserve updates, fee accrual |
 | `Sell Token` | Burn, reserve decrease, fee deduction, floor behavior |
 | `Claim Fee` | User fee claim and cross-pool claim with minted target shares |

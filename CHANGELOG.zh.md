@@ -36,6 +36,8 @@
 - 初始化时强制 `protocol_fees + creator_fees <= 100`。
 - 在 supply 更新前计算价格并发出 buy/sell 事件。
 - 将 `total_fee_share_percentage` 扩宽为 `u16`，避免溢出。
+- 在 `claim_pool_fees` 中校验 `protocol_account`。
+- 允许费用接收者表满时更新已有接收者。
 
 ### 安全
 

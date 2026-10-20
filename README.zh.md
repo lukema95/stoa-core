@@ -69,7 +69,7 @@ scripts/             仓库检查脚本（program ID、文档配对）
 - Rust stable（1.88+；由 `rust-toolchain.toml` 固定）
 - Solana CLI 2.1.x
 - Anchor CLI 0.32.1
-- Node.js 20+ 和 Yarn 1.22+
+- Node.js 20.18+ 和 Yarn 1.22+
 
 ### 构建与测试
 

@@ -18,7 +18,7 @@ This document describes the intended security properties and the known gaps. It 
 
 ## 2. Trust assumptions
 
-- **Protocol admin.** `CurveConfiguration.admin` receives the protocol fee and must sign `buy` / `sell` as `protocol_account`. Protect this key with a multisig in production.
+- **Protocol admin.** `CurveConfiguration.admin` receives the protocol fee. `buy`, `sell`, and `claim_pool_fees` require `protocol_account` to equal this address. Protect the admin key with a multisig in production.
 - **Upgrade authority.** The program is deployed as an upgradeable BPF program. Whoever controls the upgrade authority can change program logic. Put it behind a multisig and publish an upgrade policy.
 - **Token-2022.** The program assumes the Token-2022 program behaves according to its specification. Mints with unsupported extensions may fail or behave differently; see section 6.
 - **SOL / rent.** Vaults are rent-exempt PDAs. The program does not top up rent; integrators must fund accounts appropriately.
@@ -43,7 +43,7 @@ The program is designed to preserve:
 - PDAs use `seeds` + `bump` constraints.
 - `pool_creator` is constrained with `address = pool.creator` in `buy` and `sell`.
 - `distribution_pool_creator` is constrained with `address = distribution_pool.creator` in `claim_pool_fees`.
-- `protocol_account` is checked in the instruction against `curve_configuration.admin`.
+- `protocol_account` is checked in `buy`, `sell`, and `claim_pool_fees` against `curve_configuration.admin`.
 - Token accounts are constrained as associated token accounts with the expected mint and authority.
 - All remaining `/// CHECK` accounts must be reviewed when adding instructions.
 

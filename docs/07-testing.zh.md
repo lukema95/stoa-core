@@ -21,7 +21,7 @@ Stoa 使用两层测试：Rust 单元测试覆盖纯逻辑和账户布局，Type
 - Rust stable（由 `rust-toolchain.toml` 固定）
 - Solana CLI 2.1.x
 - Anchor CLI 0.32.1
-- Node.js 20+ 和 Yarn 1.22+
+- Node.js 20.18+ 和 Yarn 1.22+
 
 ```bash
 yarn install
@@ -61,6 +61,7 @@ Anchor 0.32 默认使用 Surfpool 验证器。使用 `--validator legacy` 可以
 | `Create TokenMint, Metadata and PDA` | 带 Metadata Pointer 和 metadata 字段的 Token-2022 mint、PDA |
 | `Create Pool` | 两个不同创建者和 mint 的池子 |
 | `Distribute Fee` | 用户接收者和池接收者、总份额记账 |
+| `Update Fee Recipient At Capacity` | 填满 10 个接收者后更新已有接收者 |
 | `Buy Token` | 曲线价格、费用转账、supply/reserve 更新、费用累积 |
 | `Sell Token` | 销毁、储备减少、费用扣除、地板行为 |
 | `Claim Fee` | 用户费用领取和跨池领取（实际 mint 目标 Share） |

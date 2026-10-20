@@ -22,7 +22,7 @@ By participating, you agree to follow our [Code of Conduct](CODE_OF_CONDUCT.md).
 - Rust stable (1.88+; pinned in `rust-toolchain.toml`)
 - Solana CLI 2.1.x
 - Anchor CLI 0.32.1
-- Node.js 20+ and Yarn 1.22+
+- Node.js 20.18+ and Yarn 1.22+
 
 ### Install and build
 

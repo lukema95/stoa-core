@@ -182,6 +182,29 @@ describe("stoa", () => {
     }
   });
 
+  it("Update Fee Recipient At Capacity", async () => {
+    // Fill the table to the maximum with zero-share recipients.
+    for (let i = 0; i < 8; i += 1) {
+      await distributeUserFee(
+        program,
+        poolPda,
+        tokenMintPda,
+        user1,
+        Keypair.generate().publicKey,
+        0,
+      );
+    }
+
+    let poolInfo = await program.account.pool.fetch(poolPda);
+    assert.equal(poolInfo.feeRecipients.length, 10);
+
+    // Updating an existing recipient must still work when the table is full.
+    await distributeUserFee(program, poolPda, tokenMintPda, user1, user2.publicKey, 15);
+
+    poolInfo = await program.account.pool.fetch(poolPda);
+    assert.equal(poolInfo.totalFeeSharePercentage, 25);
+  });
+
   it("Buy Token", async () => {
     try {
       const poolSolVaultBalanceBefore = await provider.connection.getBalance(poolSolVaultPda);
@@ -580,11 +603,12 @@ async function distributeUserFee(
   tokenMint: PublicKey,
   distributor: Keypair,
   recipient: PublicKey,
+  sharePercentage = 10,
 ) {
   console.log("===========Distribute User Fee===========");
   try {
     await program.methods
-      .distributeUserFee(10)
+      .distributeUserFee(sharePercentage)
       .accounts({
         pool: poolPda,
         tokenMint: tokenMint,

@@ -22,7 +22,7 @@
 - Rust stable（1.88+；由 `rust-toolchain.toml` 固定）
 - Solana CLI 2.1.x
 - Anchor CLI 0.32.1
-- Node.js 20+ 和 Yarn 1.22+
+- Node.js 20.18+ 和 Yarn 1.22+
 
 ### 安装与构建
 

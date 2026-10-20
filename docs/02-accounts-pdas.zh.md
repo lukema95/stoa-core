@@ -21,7 +21,7 @@ pub struct CurveConfiguration {
 - 空间：`8 + 32 + 8 + 8 + 8 = 64`
 - `init` 只能成功一次。没有 `update_config` 指令，改费率必须升级程序或另外部署。
 
-`admin` 身兼两职：部署者，以及买卖时 `protocol_account` 必须相等的地址（`buy.rs` / `sell.rs` 里手写校验）。
+`admin` 是 `initialize` 的签名者，也是 `buy`、`sell` 和 `claim_pool_fees` 中 `protocol_account` 必须相等的地址。
 
 ### 1.2 `Pool`（每个 mint 一个）
 

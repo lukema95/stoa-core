@@ -10,7 +10,7 @@ This guide covers local and devnet deployment, program ID management, initializa
 rustc --version        # stable, 1.88+ (or use rust-toolchain.toml)
 solana --version       # 2.1.x
 anchor --version       # 0.32.1
-node --version         # 20+
+node --version         # 20.18+
 yarn --version         # 1.22+
 ```
 
